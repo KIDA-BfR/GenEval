@@ -1,1 +1,2 @@
-from .fct import process 
+from .fct import ColumnProcessor
+from .fct import StringColumnProcessor 
