@@ -8,7 +8,6 @@ class ColumnProcessor:
     def compare(self, val1, val2):
         raise NotImplementedError("Subclasses should implement this!")
 
-
 class StringColumnProcessor(ColumnProcessor):
     def process(self, value):
         if pd.isna(value) or value == "N/A":
