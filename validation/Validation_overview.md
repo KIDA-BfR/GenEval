@@ -1,0 +1,1 @@
+Folder contains README-validation.md and CARC_Muta_validation_June_2025.ipynb. Readme describes the architecture of the validation classes and CARC_Muta_validation_June_2025.ipynb contains the latest validation script version
