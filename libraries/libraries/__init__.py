@@ -1,2 +1,2 @@
-from .1_valid_class import ColumnProcessor, StringColumnProcessor, StringColumnNoisyProcessor, KeywordListColumnProcessor
-from .1_valid_class import BooleanListColumnProcessor, ListColumnProcessor, OrderedListColumnProcessor, NumericColumnProcessor 
+from .valid_class_3 import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor
+from .valid_class_3 import List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
