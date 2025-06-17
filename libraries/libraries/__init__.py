@@ -1,2 +1,3 @@
-from .valid_class_3 import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor
-from .valid_class_3 import List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
+from .valid_import_1 import dataframe_impl
+from .valid_class_3 import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
+
