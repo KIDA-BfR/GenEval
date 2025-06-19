@@ -37,20 +37,26 @@ def define_columns():
         c = int(input("Choose a number between 1 to 6"))
         if c == 1:
             liste_attribution.append(NumericColumnProcessor())
-        if c == 2:
+        elif c == 2:
             liste_attribution.append(StringColumnProcessor())
+        elif c == 3:
+            liste_attribution.append(StringNoisyColumnProcessor())
+        elif c == 4:
+            liste_attribution.append(List_of_Numbers_ColumnProcessor())
+        elif c == 5:
+            liste_attribution.append(Ordered_List_of_Numbers_ColumnProcessor())
+        elif c == 6:
+            liste_attribution.append(List_of_Strings_ColumnProcessor())
         else:
             print("Invalid choice. Please select a number between 1 to 6.")
 
-
-
     processors = {
 
-        "column 1: " = c1,
-        "column 2: " = c2,
+        "column 1: " = liste_attribution[0],
+        "column 2: " = liste_attribution[1],
 
 
-        "column n: " = cn
+        "column n: " =liste_attribution[n]
     }
 
 
