@@ -1,6 +1,8 @@
 
 from libraries.libraries.valid_class_3 import NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
 
+#prb 1: 
+
 
 def define_columns():
 #méthode 2: choix de la classe pr chaque colonne
@@ -24,7 +26,7 @@ def define_columns():
     print("What type of processing ?")
     print("Choose from this table: ")
     print("Processing methods ")
-    print("-"*15)
+    print("-"*19)
     print("1 - NumericColumnProcessor()")
     print("2 - StringColumnProcessor()")
     print("3 - StringNoisyColumnProcessor()")
@@ -52,11 +54,11 @@ def define_columns():
 
     processors = {
 
-        "column 1: " = liste_attribution[0],
-        "column 2: " = liste_attribution[1],
+        "column 1: " : liste_attribution[0],
+        "column 2: " : liste_attribution[1],
 
 
-        "column n: " =liste_attribution[n]
+        "column n: " : liste_attribution[n],
     }
 
 
