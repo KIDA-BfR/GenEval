@@ -6,8 +6,8 @@ from libraries.valid_class_3 import NumericColumnProcessor, StringColumnProcesso
 # Have the choice of 2 functions 
 # The first one is better-suited for smaller tables
 # You input a .txt file (the attribution argument) in which you already made the choice of which processing method 
-# for each column by writing a list. The list is only the abbreviation of the processing method, in the same order
-# as the columns go, and coma-separated.
+# for each column by writing a list. The list is only the abbreviation of the processing method, reminded when 
+# you run the function, in the same order as the columns, coma-separated and put into square bracket at beginning and end.
 # Time-consuming but best if you already know you don't want the default values.
 
 # The second one is better-suited for bigger tables
