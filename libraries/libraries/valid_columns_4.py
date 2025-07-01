@@ -107,6 +107,7 @@ def automatic_process_for_columns_attribution(table_truth):
     processors_dict = {col: str(processor) for col, processor in processors.items()}
     with open('attribution.json', 'w') as json_file:
         json.dump(processors_dict, json_file, indent=4)  
+    return "The JSON file holding the attribution has been saved on your end."
 
 
 def modify_attribution(attribution):
