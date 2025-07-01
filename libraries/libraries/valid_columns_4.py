@@ -75,20 +75,32 @@ def automatic_process_for_columns_attribution(table_truth):
         types_in_column = set()
 
         for item in sample:
-            if isinstance(item, list):
-                if len(item) > 0:
-                    # Check the type of the first element in the list
-                    first_element_type = type(item[0])
-                    if all(isinstance(x, (int, float)) for x in item):
-                        types_in_column.add(list[int])
-                    elif all(isinstance(x, str) for x in item):
-                        types_in_column.add(list[str])
+            # Check if the item is a string that can be split into multiple parts
+            if isinstance(item, str) and ',' in item:
+                # Split the string by commas and strip whitespace
+                parts = [part.strip() for part in item.split(',')]
+
+                # Determine the type of each part
+                part_types = set()
+                for part in parts:
+                    if part.isdigit():
+                        part_types.add(int)
+                    elif part.replace('.', '', 1).isdigit():  # Check for float
+                        part_types.add(float)
                     else:
-                        types_in_column.add(list)
+                        part_types.add(str)
+
+                # Determine the overall type of the list
+                if len(part_types) == 1:
+                    if part_types.pop() in (int, float):
+                        types_in_column.add(list[int])
+                    elif part_types.pop() is str:
+                        types_in_column.add(list[str])
                 else:
                     types_in_column.add(list)
             else:
                 types_in_column.add(type(item))
+
 
         if any(typ in (int, float) for typ in types_in_column):
             processors[column] = NumericColumnProcessor()
