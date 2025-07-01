@@ -15,11 +15,7 @@ from libraries.valid_class_3 import NumericColumnProcessor, StringColumnProcesso
 # There are default choices, but you can modify it and choose a more suitable processing method via the JSON file 
 # that you get in the end. Run it in the next function to apply the modifications, after manually editing the JSON file.
 
-def manual_process_for_columns_attribution(table_truth, attribution):
-    # Defining how many columns
-    table_truth.columns = table_truth.columns.str.strip()
-    nb_columns = len(table_truth.columns)
-
+def manual_process_for_columns_attribution(table_truth, attribution_txt_file_path):
     # Choosing the processing method for each column
     print("What type of processing for each column ?")
     print("Write a txt file via choosing from this table: ")
@@ -32,7 +28,38 @@ def manual_process_for_columns_attribution(table_truth, attribution):
     print("ordered_list_num - Ordered_List_of_Numbers_ColumnProcessor()")
     print("list_words - List_of_Strings_ColumnProcessor()")
 
-    
+    # Extract column names from the table
+    columns_list = table_truth.columns.str.strip().tolist()
+
+    # Read the list from the .txt file
+    with open(attribution_txt_file_path, 'r') as file:
+        process_list = [line.strip() for line in file.readlines()]
+
+    # Check if both lists are the same length
+    if len(columns_list) != len(process_list):
+        return "Error: The number of columns and the number of processing methods do not match."
+
+    # Check if values from the attribution.txt file are in the accepted values list
+    process_values = ['num', 'words', 'words_not_exact', 'list_num', 'ordered_list_num', 'list_words']
+    for value in process_list:
+        if value not in process_values:
+            return "Invalid choice of processing method. Check the spelling."
+        
+    # Mapping from accepted text values to processing method class names
+    processing_mapping = {
+        'num': NumericColumnProcessor(),
+        'words': StringColumnProcessor(),
+        'words_not_exact': StringNoisyColumnProcessor(),
+        'list_num': List_of_Numbers_ColumnProcessor(),
+        'ordered_list_num': Ordered_List_of_Numbers_ColumnProcessor(),
+        'list_words': List_of_Strings_ColumnProcessor()
+    }
+    # Replace text values with actual processing method class names
+    real_process_list = [processing_mapping[value].__name__ for value in process_list]
+
+    # Create a dictionary combining the two lists
+    processors = dict(zip(columns_list, real_process_list))
+    return "The manual attribution was taken into account."
 
 
 def automatic_process_for_columns_attribution(table_truth):
