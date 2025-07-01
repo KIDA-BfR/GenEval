@@ -1,0 +1,8 @@
+{
+    "Nb": "<libraries.valid_class_3.NumericColumnProcessor object at 0x000001AA5E5356A0>",
+    "String": "<libraries.valid_class_3.StringColumnProcessor object at 0x000001AA5E536270>",
+    "string noisy": "<libraries.valid_class_3.StringColumnProcessor object at 0x000001AA5E59B390>",
+    "list nb": "<libraries.valid_class_3.StringColumnProcessor object at 0x000001AA5E59AFD0>",
+    "ordered list nb": "<libraries.valid_class_3.StringColumnProcessor object at 0x000001AA5E5B5F30>",
+    "list string": "<libraries.valid_class_3.StringColumnProcessor object at 0x000001AA5E5B56E0>"
+}
