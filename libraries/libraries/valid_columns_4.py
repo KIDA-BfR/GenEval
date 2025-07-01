@@ -49,12 +49,12 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
         
     # Mapping from accepted text values to processing method class names
     processing_mapping = {
-        'num': NumericColumnProcessor(),
-        'words': StringColumnProcessor(),
-        'words_not_exact': StringNoisyColumnProcessor(),
-        'list_num': List_of_Numbers_ColumnProcessor(),
-        'ordered_list_num': Ordered_List_of_Numbers_ColumnProcessor(),
-        'list_words': List_of_Strings_ColumnProcessor()
+        'num': NumericColumnProcessor,
+        'words': StringColumnProcessor,
+        'words_not_exact': StringNoisyColumnProcessor,
+        'list_num': List_of_Numbers_ColumnProcessor,
+        'ordered_list_num': Ordered_List_of_Numbers_ColumnProcessor,
+        'list_words': List_of_Strings_ColumnProcessor
     }
     # Replace text values with actual processing method class names
     real_process_list = [processing_mapping[value].__name__ for value in process_list]
