@@ -10,9 +10,7 @@ def sort_data(table_truth, table_compared):
 
     # Creating a glossary to specify if different terms have the same meaning
     glossary = {
-        "String": {
-            "DFGE" : "DeFeEeGe"
-        },
+
     }
     # Applying the glossary to a specific column
     tables = [("truth", table_truth), ("compared", table_compared)]
