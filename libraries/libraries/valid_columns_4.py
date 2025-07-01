@@ -34,7 +34,8 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
 
     # Read the list from the .txt file
     with open(attribution_txt_file_path, 'r') as file:
-        process_list = [line.strip() for line in file.readlines()]
+        file_content = file.read()
+        process_list = [value.strip() for value in file_content.split(',')]
 
     # Check if both lists are the same length
     if len(columns_list) != len(process_list):

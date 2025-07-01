@@ -1,1 +1,1 @@
-['num','words']
+num,words
