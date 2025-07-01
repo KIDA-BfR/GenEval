@@ -30,6 +30,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
 
     # Extract column names from the table
     columns_list = table_truth.columns.str.strip().tolist()
+    print(columns_list)
 
     # Read the list from the .txt file
     with open(attribution_txt_file_path, 'r') as file:
@@ -56,6 +57,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
     }
     # Replace text values with actual processing method class names
     real_process_list = [processing_mapping[value].__name__ for value in process_list]
+    print(real_process_list)
 
     # Create a dictionary combining the two lists
     processors = dict(zip(columns_list, real_process_list))
