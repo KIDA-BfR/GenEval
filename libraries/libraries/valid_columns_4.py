@@ -114,4 +114,4 @@ def modify_attribution(attribution):
     global processors
     with open(attribution, 'r') as json_file:
         processors = json.load(json_file)
-    print("The attribution has been edited.") 
+    return processors, "The attribution has been edited."
