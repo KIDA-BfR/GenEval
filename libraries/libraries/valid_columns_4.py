@@ -71,7 +71,7 @@ def automatic_process_for_columns_attribution(table_truth):
     sample_size = 5
     columns = table_truth.columns
     for column in columns:
-        sample = table_truth[column].dropna().sample(min(sample_size, len(table_truth[column])))
+        sample = table_truth[column].dropna().sample(min(sample_size, len(table_truth[column])), replace=True)
         types_in_column = set()
 
         for item in sample:
