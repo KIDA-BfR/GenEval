@@ -59,7 +59,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
 
     # Create a dictionary combining the two lists
     processors = dict(zip(columns_list, real_process_list))
-    return "The manual attribution was taken into account."
+    print("The manual attribution was taken into account.")
 
 
 def automatic_process_for_columns_attribution(table_truth):
