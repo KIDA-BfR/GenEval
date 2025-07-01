@@ -112,6 +112,6 @@ def automatic_process_for_columns_attribution(table_truth):
 
 def modify_attribution(attribution):
     global processors
-    with open('attribution.json', 'r') as json_file:
+    with open(attribution, 'r') as json_file:
         processors = json.load(json_file)
     print("The attribution has been edited.") 
