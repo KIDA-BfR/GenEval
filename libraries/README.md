@@ -7,7 +7,7 @@ This library compares a ground truth table to an extraction table and evaluates 
 
 ## Main goal
 ---
-The idea behind the creation of such library is to be able to validate the data extraction performance of an LLM - or any other data extraction tool.
+The idea behind the creation of such library is to be able to ==validate the data extraction performance of an LLM== - or any other data extraction tool.
 For now, six different data types can be analysed. They are listed under **Type of extracted data**.
 More processing methods can/ will be added.
 
@@ -35,11 +35,14 @@ This library is relevant if a bigger LLM extraction project is undertaken. You c
 
 ### 3. classes
 
-| Name of the class | Data type | Description |
-|-----|-----------|------------------------------------------------------------------------------------------------------------------------------|
-| NumericColumnProcessor | int, float | ? | StringColumnProcessor | str | ? | StringNoisyColumnProcessor | str | ? 
-| List_of_Numbers_ColumnProcessor | int, float | ? | Ordered_List_of_Numbers_ColumnProcessor | int, float | ? 
-| List_of_Strings_ColumnProcessor | str | ?
+| Name of the class | Manual attribution | Data type | Description |
+|-------------------|--------------------|-------------|-----------|
+| `NumericColumnProcessor` | num | int, float | ?
+| `StringColumnProcessor` | words | str | ? 
+| `StringNoisyColumnProcessor` | words_not_exact | str | ? 
+| `List_of_Numbers_ColumnProcessor` | list_num | int, float | ? 
+| `Ordered_List_of_Numbers_ColumnProcessor` | ordered_list_num | int, float | ? 
+| `List_of_Strings_ColumnProcessor` | list_words | str | ?
 
 ### 4.1. `manual_process_for_columns_attribution()`
 ### 4.2. `automatic_process_for_columns_attribution()`
