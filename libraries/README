@@ -5,8 +5,17 @@ This library compares a ground truth table to an extraction table and evaluates 
 
 ## Functions
 ---
-# 1. dataframe_impl()
+# 1. reading_tables()
 
+# 2. sort_data()
+
+# 3. classes
+
+# 4.1. manual_process_for_columns_attribution ()
+# 4.2. automatic_process_for_columns_attribution()
+# 4.3. modify_attribution()
+
+# 5. comparis
 
 
 ## Type of extracted data

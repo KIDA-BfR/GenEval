@@ -1,6 +1,6 @@
 import pandas as pd
 
-def comparison_storage(table_truth, table_compared, processors):
+def comparison_init(table_truth, table_compared, processors):
     # Create an empty DataFrame to store the comparison results
     columns = table_truth.columns
     comparison_results = pd.DataFrame(columns=columns)
