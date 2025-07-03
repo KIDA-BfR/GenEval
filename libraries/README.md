@@ -27,9 +27,20 @@ This library is relevant if a bigger LLM extraction project is undertaken. You c
 ---
 
 ## Functions - Application to a basic use case
+
+You can find the use case tables under the folder `content`
+- `truth_table.xlsx`
+- `compared_table.xlsx`
+
 ---
 
 ### 1. `reading_tables()`
+This function allows to load the data tables.
+
+python
+from libraries. import reading_tables
+
+table_truth, table_compared = reading_tables("file_path/truth_table.xlsx", "file_path/compared_table.xlsx)
 
 ### 2. `sort_data()`
 
