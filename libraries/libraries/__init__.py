@@ -1,4 +1,4 @@
-from .valid_import_1 import dataframe_impl
+from .valid_import_1 import reading_tables
 from .valid_gloss_2 import sort_data
 from .valid_class_3 import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
 from .valid_columns_4 import manual_process_for_columns_attribution, automatic_process_for_columns_attribution, modify_attribution

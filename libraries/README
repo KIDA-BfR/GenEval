@@ -1,0 +1,15 @@
+# Validation of an LLM-performed Extraction Library
+---
+
+This library compares a ground truth table to an extraction table and evaluates the accuracy of the extraction.
+
+## Functions
+---
+# 1. dataframe_impl()
+
+
+
+## Type of extracted data
+
+- Strings, Approximate strings, Lists of strings
+- Numbers, Lists of numbers, Ordered lists of numbers
