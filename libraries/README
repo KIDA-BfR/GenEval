@@ -3,28 +3,47 @@
 
 This library compares a ground truth table to an extraction table and evaluates the accuracy of the extraction.
 
-## Functions
 ---
-### 1. reading_tables()
 
-### 2. sort_data()
+## Main goal
+---
+The idea behind the creation of such library is to be able to validate the data extraction performance of an LLM - or any other data extraction tool.
+For now, six different data types can be analysed. They are listed under **Type of extracted data**.
+More processing methods can/ will be added.
 
-### 3. classes
+You need first at least one PDF file containing all the relevant data.
+Then you will produce a ground truth table - in which you read and copied the PDF file content of interest.
+The you will produce an extracted "compared" table - by an LLM or another tool - for which you asked to extract the same content as in your ground truth table.
 
-### 4.1. manual_process_for_columns_attribution ()
-### 4.2. automatic_process_for_columns_attribution()
-### 4.3. modify_attribution()
+This library is relevant if a bigger LLM extraction project is undertaken. You can apply this library to a sample of PDF files, from which you would have previously extracted the data - by hand and via the use of an LLM.
 
-### 5. comparison_init()
-
-### 6. results()
-
-
+---
 
 ## Type of extracted data
 ---
 - Strings, Approximate strings, Lists of strings
 - Numbers, Lists of numbers, Ordered lists of numbers
 
-## Application examples
+---
+
+## Functions - Application on a basic use case
+---
+
+### 1. `reading_tables()`
+
+### 2. `sort_data()`
+
+### 3. classes
+
+### 4.1. `manual_process_for_columns_attribution()`
+### 4.2. `automatic_process_for_columns_attribution()`
+### 4.3. `modify_attribution()`
+
+### 5. `comparison_init()`
+
+### 6. `results()`
+
+
+
+## Possible use cases
 
