@@ -7,7 +7,7 @@ This library compares a ground truth table to an extraction table and evaluates 
 
 ## Main goal
 ---
-The idea behind the creation of such library is to be able to ==validate the data extraction performance of an LLM== - or any other data extraction tool.
+The idea behind the creation of such library is to be able to ==validate== the data extraction performance of an LLM - or any other data extraction tool.
 For now, six different data types can be analysed. They are listed under **Type of extracted data**.
 More processing methods can/ will be added.
 
