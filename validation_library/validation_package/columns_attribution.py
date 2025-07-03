@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 from collections import defaultdict
-from libraries.valid_class_3 import NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
+from validation_package.classes import NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
 
 # Have the choice of 2 functions 
 # The first one is better-suited for smaller tables
