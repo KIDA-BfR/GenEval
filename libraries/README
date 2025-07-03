@@ -5,20 +5,26 @@ This library compares a ground truth table to an extraction table and evaluates 
 
 ## Functions
 ---
-# 1. reading_tables()
+### 1. reading_tables()
 
-# 2. sort_data()
+### 2. sort_data()
 
-# 3. classes
+### 3. classes
 
-# 4.1. manual_process_for_columns_attribution ()
-# 4.2. automatic_process_for_columns_attribution()
-# 4.3. modify_attribution()
+### 4.1. manual_process_for_columns_attribution ()
+### 4.2. automatic_process_for_columns_attribution()
+### 4.3. modify_attribution()
 
-# 5. comparis
+### 5. comparison_init()
+
+### 6. results()
+
 
 
 ## Type of extracted data
-
+---
 - Strings, Approximate strings, Lists of strings
 - Numbers, Lists of numbers, Ordered lists of numbers
+
+## Application examples
+
