@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 def results(table_truth, table_compared, comparison_results, confusion_matrices):
     combined_output = pd.DataFrame()
@@ -52,4 +53,11 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices)
     # Convert confusion matrices to DataFrame
     confusion_matrices_df = pd.DataFrame(confusion_matrices).T
 
-    return combined_output, confusion_matrices_df
+    # Saving results in an .xlsx file
+    notebook_dir = os.getcwd()
+    comparison_results_file_path = os.path.join(notebook_dir, 'comparison.results.xlsx')
+    combined_output.to_excel(comparison_results_file_path, index = False)
+    confusion_matrices_file_path = os.path.join(notebook_dir, 'confusion_matrices.xlsx')
+    confusion_matrices_df.to_excel(confusion_matrices_file_path, index = False)
+
+    return f"results saved to {comparison_results_file_path}"
