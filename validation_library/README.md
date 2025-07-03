@@ -28,7 +28,7 @@ This library is relevant if a bigger LLM extraction project is undertaken. You c
 
 ## Functions - Application to a basic use case
 
-You can find the use case tables under the folder `content`
+You can find the use case tables under the folder `use_case_content`
 - `truth_table.xlsx`
 - `compared_table.xlsx`
 
@@ -36,15 +36,25 @@ You can find the use case tables under the folder `content`
 
 ### 1. `reading_tables()`
 This function allows to load the data tables.
+Change the path way to your actual one to load files.
 
-python
-from libraries. import reading_tables
+```python
+from validation_package.load import reading_tables
 
-table_truth, table_compared = reading_tables("file_path/truth_table.xlsx", "file_path/compared_table.xlsx)
+table_truth, table_compared = reading_tables("your_file_path/truth_table.xlsx", "your_file_path/compared_table.xlsx")
+```
 
 ### 2. `sort_data()`
+This function normalize the data and allows you to edit a glossary. Useful to indicate the code that some non-identical items should be treated as identical.
+
+```python
+from validation_package.sort_and_glossary import sort_data
+sort_data(table_truth, table_compared)
+```
 
 ### 3. classes
+Here are the current different processing methods you can find to validate your data.
+Each processing method is stored under a class.
 
 | Name of the class | Manual attribution | Data type | Description |
 |-------------------|--------------------|-------------|-----------|
@@ -55,13 +65,56 @@ table_truth, table_compared = reading_tables("file_path/truth_table.xlsx", "file
 | `Ordered_List_of_Numbers_ColumnProcessor` | ordered_list_num | int, float | ? 
 | `List_of_Strings_ColumnProcessor` | list_words | str | ?
 
-### 4.1. `manual_process_for_columns_attribution()`
-### 4.2. `automatic_process_for_columns_attribution()`
-### 4.3. `modify_attribution()`
+### 4. columns attribution
+This part includes 3 functions, of which 2 main, and you should choose the best-suited one for your case.
+In this example we are using both to demonstrate, but they have the same goal. The 3rd one is linked with the 2nd one.
+
+#### 4.1. `manual_process_for_columns_attribution()`
+This function is better-suited for smaller tables. 
+You input a .txt file (the attribution argument) in which you already made the choice of which processing method for each column by writing a list. The list is only the abbreviation of the processing method (cf ***3. classes***), reminded when you run the function, in the same order as the columns and coma-separated.
+Time-consuming but best if you already know you don't want the default values.
+
+``` python
+from validation_package.columns_attribution import manual_process_for_columns_attribution
+attribution_file = "your_file_path/manual_attribution_ex.txt"
+processors = manual_process_for_columns_attribution(table_truth, attribution_file)
+```
+
+#### 4.2. `automatic_process_for_columns_attribution()`
+The second one is better-suited for bigger tables. 
+The code automatically choose a processing method for each column, depending on the type of content inside.
+There are default choices, but you can modify it and choose a more suitable processing method via the JSON file that you get in the end. 
+Run it in the next function to apply the modifications, after manually editing the JSON file.
+
+``` python
+from validation_package.columns_attribution import automatic_process_for_columns_attribution
+processors = automatic_process_for_columns_attribution(table_truth)
+```
+
+#### 4.3. `modify_attribution()`
+As mentioned previously, run the modified JSON file to update the dictionary containing the processing method for each column.
+
+``` python
+from validation_package.columns_attribution import modify_attribution
+modified_attribution_file = "your_file_path/modified_attribution_file.json"
+new_processors = modify_attribution(modified_attribution_file)
+```
 
 ### 5. `comparison_init()`
+This function initialises the confusion matrix and the comparison results.
+
+``` python
+from validation_package.comparison import comparison_init
+comparison_results, confusion_matrices = comparison_init(table_truth, table_compared, processors)
+```
 
 ### 6. `results()`
+Finally this function provides an .xlsx file with the comparison results.
+
+``` python 
+from validation_package.get_results import results
+combined_output, confusion_matrices_df = results(table_truth, table_compared, comparison_results, confusion_matrices)
+``` 
 
 ---
 

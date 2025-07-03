@@ -3,15 +3,15 @@ import pandas as pd
 from collections import defaultdict
 from validation_package.classes import NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
 
-# Have the choice of 2 functions 
-# The first one is better-suited for smaller tables
+# Have the choice of 2 functions :
+# The first one is better-suited for smaller tables.
 # You input a .txt file (the attribution argument) in which you already made the choice of which processing method 
 # for each column by writing a list. The list is only the abbreviation of the processing method, reminded when 
-# you run the function, in the same order as the columns, coma-separated and put into square bracket at beginning and end.
+# you run the function, in the same order as the columns and coma-separated.
 # Time-consuming but best if you already know you don't want the default values.
 
-# The second one is better-suited for bigger tables
-# The code automatically choose a processing method for each column, depending on the type of content inside
+# The second one is better-suited for bigger tables.
+# The code automatically choose a processing method for each column, depending on the type of content inside.
 # There are default choices, but you can modify it and choose a more suitable processing method via the JSON file 
 # that you get in the end. Run it in the next function to apply the modifications, after manually editing the JSON file.
 
