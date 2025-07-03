@@ -1,6 +1,6 @@
-from .valid_import_1 import reading_tables
-from .valid_gloss_2 import sort_data
-from .valid_class_3 import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
-from .valid_columns_4 import manual_process_for_columns_attribution, automatic_process_for_columns_attribution, modify_attribution
-from .valid_comp_5 import comparison_init
-from .valid_format_6 import results
+from .load import reading_tables
+from .sort_and_glossary import sort_data
+from .classes import ColumnProcessor, NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
+from .columns_attribution import manual_process_for_columns_attribution, automatic_process_for_columns_attribution, modify_attribution
+from .comparison import comparison_init
+from .get_results import results
