@@ -1,7 +1,8 @@
 import pandas as pd
 import os
+from IPython.display import display 
 
-def results(table_truth, table_compared, comparison_results, confusion_matrices):
+def results(table_truth, table_compared, comparison_results, confusion_matrices, display_results = False):
     combined_output = pd.DataFrame()
     columns = table_truth.columns
 
@@ -52,6 +53,12 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices)
 
     # Convert confusion matrices to DataFrame
     confusion_matrices_df = pd.DataFrame(confusion_matrices).T
+
+    # Display results if display_results is True
+    if display_results:
+        with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', None, 'display.max_colwidth', None):
+            display(combined_output)
+            display(confusion_matrices_df)
 
     # Saving results in an .xlsx file
     notebook_dir = os.getcwd()
