@@ -16,4 +16,4 @@ def reading_tables(path_truth, path_compared, display_tables = False):
             display(table_truth)
             display(table_compared)
     
-    return "Tables are loaded"
+    return "Tables are loaded", table_truth, table_compared
