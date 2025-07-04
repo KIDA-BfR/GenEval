@@ -37,6 +37,7 @@ You can find the use case tables under the folder `use_case_content`
 ### 1. `reading_tables()`
 This function allows to load the data tables.
 Change the path way to your actual one to load files.
+You can display the tables by setting `display_tables` to `True`.
 
 ```python
 from validation_package.load import reading_tables
