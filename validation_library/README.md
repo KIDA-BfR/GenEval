@@ -42,15 +42,16 @@ You can display the tables by setting `display_tables` to `True`.
 ```python
 from validation_package.load import reading_tables
 
-table_truth, table_compared = reading_tables("your_file_path/truth_table.xlsx", "your_file_path/compared_table.xlsx")
+table_truth, table_compared = reading_tables("your_file_path/truth_table.xlsx", "your_file_path/compared_table.xlsx", display_tables = True)
 ```
 
 ### 2. `sort_data()`
-This function normalize the data and allows you to edit a glossary. Useful to indicate the code that some non-identical items should be treated as identical.
+This function normalize the data and allows you to edit a glossary in the function's arguments. 
+Useful to indicate the code that some non-identical items should be treated as identical.
 
 ```python
 from validation_package.sort_and_glossary import sort_data
-sort_data(table_truth, table_compared)
+sort_data(table_truth, table_compared, gloassry = None)
 ```
 
 ### 3. classes
