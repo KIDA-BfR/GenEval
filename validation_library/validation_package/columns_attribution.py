@@ -93,16 +93,17 @@ def automatic_process_for_columns_attribution(table_truth):
                 # Determine the overall type of the list
                 if part_types: # Check if not empty
                     if len(part_types) == 1:
-                        if part_types.pop() in (int, float):
+                        part_type = part_types.pop()
+                        if part_type in (int, float):
                             types_in_column.add(list[int])
-                        elif part_types.pop() is str:
+                        elif part_type is str:
                             types_in_column.add(list[str])
                     else:
                         types_in_column.add(list)
             else:
                 types_in_column.add(type(item))
 
-
+        # Assign processor based on detected types
         if any(typ in (int, float) for typ in types_in_column):
             processors[column] = NumericColumnProcessor()
         elif any(typ is str for typ in types_in_column):
@@ -115,6 +116,8 @@ def automatic_process_for_columns_attribution(table_truth):
             processors[column] = List_of_Numbers_ColumnProcessor()
         elif any(typ is list[str] for typ in types_in_column):
             processors[column] = List_of_Strings_ColumnProcessor()
+        else:
+            processors[column] = StringColumnProcessor
 
     # Save processors to a JSON file
     processors_dict = {col: str(processor) for col, processor in processors.items()}
