@@ -1,0 +1,8 @@
+{
+    "Nb": "<validation_package.classes.NumericColumnProcessor object at 0x00000183E8CE5E80>",
+    "String": "<validation_package.classes.StringColumnProcessor object at 0x00000183E8CE5550>",
+    "string noisy": "<validation_package.classes.StringNoisyColumnProcessor object at 0x00000183E8D3B750>",
+    "list nb": "<class 'validation_package.classes.List_of_Numbers_ColumnProcessor'>",
+    "ordered list nb": "<class 'validation_package.classes.Ordered_List_of_Numbers_ColumnProcessor'>",
+    "list string": "<class 'validation_package.classes.List_of_Strings_ColumnProcessor'>"
+}

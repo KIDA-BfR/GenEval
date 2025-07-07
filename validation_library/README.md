@@ -51,6 +51,7 @@ Useful to indicate the code that some non-identical items should be treated as i
 
 ```python
 from validation_package.sort_and_glossary import sort_data
+
 sort_data(table_truth, table_compared, gloassry = None)
 ```
 
@@ -60,12 +61,12 @@ Each processing method is stored under a class.
 
 | Name of the class | Manual attribution | Data type | Description |
 |-------------------|--------------------|-------------|-----------|
-| `NumericColumnProcessor` | num | int, float | ?
-| `StringColumnProcessor` | words | str | ? 
-| `StringNoisyColumnProcessor` | words_not_exact | str | ? 
-| `List_of_Numbers_ColumnProcessor` | list_num | int, float | ? 
-| `Ordered_List_of_Numbers_ColumnProcessor` | ordered_list_num | int, float | ? 
-| `List_of_Strings_ColumnProcessor` | list_words | str | ?
+| `NumericColumnProcessor` | num | int, float | Compares numeric values
+| `StringColumnProcessor` | words | str | Compares string columns by normalizing them & comparing using sequence matching
+| `StringNoisyColumnProcessor` | words_not_exact | str | Like `StringColumnProcessor` but with lower similarity threshold
+| `List_of_Numbers_ColumnProcessor` | list_num | int, float | Compares lists with numeric values
+| `Ordered_List_of_Numbers_ColumnProcessor` | ordered_list_num | int, float | Compares lists with numeric values and take order into account
+| `List_of_Strings_ColumnProcessor` | list_words | str | Compares lists with string values
 
 ### 4. columns attribution
 This part includes 3 functions, of which 2 main, and you should choose the best-suited one for your case.
@@ -78,8 +79,10 @@ Time-consuming but best if you already know you don't want the default values.
 
 ``` python
 from validation_package.columns_attribution import manual_process_for_columns_attribution
+
 attribution_file = "your_file_path/manual_attribution_ex.txt"
 processors = manual_process_for_columns_attribution(table_truth, attribution_file)
+print(processors)
 ```
 
 #### 4.2. `automatic_process_for_columns_attribution()`
@@ -90,7 +93,9 @@ Run it in the next function to apply the modifications, after manually editing t
 
 ``` python
 from validation_package.columns_attribution import automatic_process_for_columns_attribution
+
 processors = automatic_process_for_columns_attribution(table_truth)
+print(processors)
 ```
 
 #### 4.3. `modify_attribution()`
@@ -98,8 +103,10 @@ As mentioned previously, run the modified JSON file to update the dictionary con
 
 ``` python
 from validation_package.columns_attribution import modify_attribution
+
 modified_attribution_file = "your_file_path/modified_attribution_file.json"
 new_processors = modify_attribution(modified_attribution_file)
+print(new_processors)
 ```
 
 ### 5. `comparison_init()`

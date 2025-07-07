@@ -117,7 +117,7 @@ def automatic_process_for_columns_attribution(table_truth):
         elif any(typ is list[str] for typ in types_in_column):
             processors[column] = List_of_Strings_ColumnProcessor()
         else:
-            processors[column] = StringColumnProcessor
+            processors[column] = StringColumnProcessor()
 
     # Save processors to a JSON file
     processors_dict = {col: str(processor) for col, processor in processors.items()}
