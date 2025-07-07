@@ -91,15 +91,16 @@ def automatic_process_for_columns_attribution(table_truth):
                         part_types.add(str)
 
                 # Determine the overall type of the list
-                if len(part_types) == 1:
-                    if part_types.pop() in (int, float):
-                        types_in_column.add(list[int])
-                    elif part_types.pop() is str:
-                        types_in_column.add(list[str])
+                if part_types: # Check if not empty
+                    if len(part_types) == 1:
+                        if part_types.pop() in (int, float):
+                            types_in_column.add(list[int])
+                        elif part_types.pop() is str:
+                            types_in_column.add(list[str])
+                    else:
+                        types_in_column.add(list)
                 else:
-                    types_in_column.add(list)
-            else:
-                types_in_column.add(type(item))
+                    types_in_column.add(type(item))
 
 
         if any(typ in (int, float) for typ in types_in_column):
