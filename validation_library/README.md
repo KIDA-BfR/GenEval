@@ -76,6 +76,7 @@ In this example we are using both to demonstrate, but they have the same goal. T
 This function is better-suited for smaller tables. 
 You input a .txt file (the attribution argument) in which you already made the choice of which processing method for each column by writing a list. The list is only the abbreviation of the processing method (cf ***3. classes***), reminded when you run the function, in the same order as the columns and coma-separated.
 Time-consuming but best if you already know you don't want the default values.
+Change the path way to your actual one to load attribution file.
 
 ``` python
 from validation_package.columns_attribution import manual_process_for_columns_attribution
@@ -100,6 +101,7 @@ print(processors)
 
 #### 4.3. `modify_attribution()`
 As mentioned previously, run the modified JSON file to update the dictionary containing the processing method for each column.
+Change the path way to your actual one to load new attribution file.
 
 ``` python
 from validation_package.columns_attribution import modify_attribution
@@ -120,11 +122,12 @@ comparison_results, confusion_matrices = comparison_init(table_truth, table_comp
 
 ### 6. `results()`
 Finally this function provides an .xlsx file with the comparison results.
+You can display the tables by setting `display_results` to `True`.
 
 ``` python 
 from validation_package.get_results import results
 
-combined_output, confusion_matrices_df = results(table_truth, table_compared, comparison_results, confusion_matrices)
+combined_output, confusion_matrices_df = results(table_truth, table_compared, comparison_results, confusion_matrices, display_results=True)
 ``` 
 
 ---
