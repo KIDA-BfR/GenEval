@@ -57,7 +57,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
         'list_words': List_of_Strings_ColumnProcessor
     }
     # Replace text values with actual processing method class names
-    real_process_list = [processing_mapping[value].__name__ for value in process_list]
+    real_process_list = [processing_mapping[value]() for value in process_list]
     print(real_process_list)
 
     # Create a dictionary combining the two lists
