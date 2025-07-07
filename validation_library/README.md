@@ -32,6 +32,8 @@ You can find the use case tables under the folder `use_case_content`
 - `truth_table.xlsx`
 - `compared_table.xlsx`
 
+There is also the file 
+- `attribution.json` useful to test the function `manual_process_for_columns_attribution`
 ---
 
 ### 1. `reading_tables()`
