@@ -114,6 +114,7 @@ This function initialises the confusion matrix and the comparison results.
 
 ``` python
 from validation_package.comparison import comparison_init
+
 comparison_results, confusion_matrices = comparison_init(table_truth, table_compared, processors)
 ```
 
@@ -122,6 +123,7 @@ Finally this function provides an .xlsx file with the comparison results.
 
 ``` python 
 from validation_package.get_results import results
+
 combined_output, confusion_matrices_df = results(table_truth, table_compared, comparison_results, confusion_matrices)
 ``` 
 

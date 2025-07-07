@@ -67,4 +67,5 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
     confusion_matrices_file_path = os.path.join(notebook_dir, 'confusion_matrices.xlsx')
     confusion_matrices_df.to_excel(confusion_matrices_file_path, index = False)
 
-    return f"results saved to {comparison_results_file_path}"
+    print(f"results are saved to {comparison_results_file_path}.")
+    return combined_output, confusion_matrices_df
