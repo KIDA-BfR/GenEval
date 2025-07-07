@@ -99,8 +99,8 @@ def automatic_process_for_columns_attribution(table_truth):
                             types_in_column.add(list[str])
                     else:
                         types_in_column.add(list)
-                else:
-                    types_in_column.add(type(item))
+            else:
+                types_in_column.add(type(item))
 
 
         if any(typ in (int, float) for typ in types_in_column):
