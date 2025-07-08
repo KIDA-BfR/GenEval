@@ -6,10 +6,10 @@ def sort_data(table_truth, table_compared, glossary=None):
     if glossary is None:
         glossary = {}
     
-    table_truth.columns = table_truth.columns.str.strip()
+    table_truth.columns = table_truth.columns.str.strip().str.lower()
     table_truth = table_truth.sort_values(by=table_truth.columns[0]).reset_index(drop=True)
 
-    table_compared.columns = table_compared.columns.str.strip()
+    table_compared.columns = table_compared.columns.str.strip().str.lower()
     table_compared = table_compared.sort_values(by=table_compared.columns[0]).reset_index(drop=True)
 
     # Applying the glossary to a specific column
