@@ -19,8 +19,9 @@ This library is relevant if a bigger LLM extraction project is undertaken. You c
 
 ---
 
-## Type of extracted data
+## An an input:
 ---
+You input 2 files, containing the following type of data:
 - Strings, Approximate strings, Lists of strings
 - Numbers, Lists of numbers, Ordered lists of numbers
 
@@ -134,5 +135,11 @@ combined_output, confusion_matrices_df = results(table_truth, table_compared, co
 
 ---
 
-# Installation
+## Output:
+---
+You get 2 files saved on your end: a confusion matrice and a table compararison side by side of each row of each column.
+
+---
+
+## Installation
 
