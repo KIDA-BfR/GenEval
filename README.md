@@ -8,12 +8,11 @@ This library compares a ground truth table to an extraction table and evaluates 
 ## Main goal
 ---
 The idea behind the creation of such library is to be able to validate the data extraction performance of an LLM - or any other data extraction tool.
-For now, six different data types can be analysed. They are listed under **Type of extracted data**.
+For now, six different data types can be analysed. They are listed under **As an input**.
 More processing methods can/ will be added.
 
-You need first at least one PDF file containing all the relevant data.
-Then you will produce a ground truth table - in which you read and copied the PDF file content of interest.
-The you will produce an extracted "compared" table - by an LLM or another tool - for which you asked to extract the same content as in your ground truth table.
+To use this library, you will produce a ground truth table - in which you read and copied at least one PDF file content of interest.
+Then you will produce an extracted "compared" table - by an LLM or another tool - for which you asked to extract the same content as in your ground truth table.
 
 This library is relevant if a bigger LLM extraction project is undertaken. You can apply this library to a sample of PDF files, from which you would have previously extracted the data - by hand and via the use of an LLM.
 
