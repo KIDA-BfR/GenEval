@@ -54,6 +54,10 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
     # Convert confusion matrices to DataFrame
     confusion_matrices_df = pd.DataFrame(confusion_matrices).T
 
+    # Reset index to make the index a column
+    confusion_matrices_df.reset_index(inplace=True)
+    confusion_matrices_df.rename(columns={'index': 'Column'}, inplace=True)
+
     # Display results if display_results is True
     if display_results:
         with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', None, 'display.max_colwidth', None):
