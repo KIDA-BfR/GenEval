@@ -14,12 +14,12 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
 
     # Calculate accuracy for each column in the confusion matrices
     for column, matrix in confusion_matrices.items():
-        C = matrix["Correct"]
+        TP = matrix["Correct"]
         FP = matrix["False Positive"]
         FN = matrix["False Negative"]
         N = matrix["Incorrect"]
 
-        accuracy = C / (C + FP + FN + N) if (C + FP + FN + N) > 0 else 0
+        accuracy = TP / (TP + FP + FN + N) if (TP + FP + FN + N) > 0 else 0
 
         # Store only the accuracy in the matrix
         matrix.update({
@@ -39,13 +39,13 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
         overall_metrics["False Negative"] += matrix["False Negative"]
 
     # Calculate the overall accuracy
-    C = overall_metrics["Correct"] # Can be further splitted to True Positive, True Negative as well
-    # omitted for the current applications.
+    TP = overall_metrics["Correct"]
     FP = overall_metrics["False Positive"]
     FN = overall_metrics["False Negative"]
     N = overall_metrics["Incorrect"]
 
-    overall_accuracy = C / (C + FP + FN + N) if (C + FP + FN + N) > 0 else 0
+
+    overall_accuracy = TP / (TP + FP + FN + N) if (TP + FP + FN + N) > 0 else 0
 
     # Store the overall metrics in the matrix
     overall_metrics.update({"Accuracy": overall_accuracy})

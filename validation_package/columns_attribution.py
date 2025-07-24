@@ -1,7 +1,12 @@
 import json
 import pandas as pd
 from collections import defaultdict
-from validation_package.classes import NumericColumnProcessor, StringColumnProcessor, StringNoisyColumnProcessor, List_of_Numbers_ColumnProcessor, Ordered_List_of_Numbers_ColumnProcessor, List_of_Strings_ColumnProcessor
+from validation_package.classes import (
+    StringColumnProcessor, StringNoisyColumnProcessor, NumericColumnProcessor,
+    BooleanListColumnProcessor, KeywordListColumnProcessor, 
+    ListColumnProcessor, OrderedListColumnProcessor, List_of_Strings_ColumnProcessor,
+    LLMColumnProcessor
+)
 
 # Have the choice of 2 functions :
 # The first one is better-suited for smaller tables.
@@ -21,12 +26,15 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
     print("Write a txt file via choosing from this table: ")
     print("Processing methods ")
     print("-"*19)
-    print("num - NumericColumnProcessor()")
     print("words - StringColumnProcessor()")
     print("words_not_exact - StringNoisyColumnProcessor()")
-    print("list_num - List_of_Numbers_ColumnProcessor()")
-    print("ordered_list_num - Ordered_List_of_Numbers_ColumnProcessor()")
+    print("num - NumericColumnProcessor()")
+    print("choice - BooleanListColumnProcessor()")
+    print("keyword - KeywordListColumnProcessor()")
+    print("list_num - ListColumnProcessor()")
+    print("list_num_ordered - OrderedListColumnProcessor()")
     print("list_words - List_of_Strings_ColumnProcessor()")
+    print("sentence - LLMColumnProcessor()")
 
     # Extract column names from the table
     columns_list = table_truth.columns.str.strip().tolist()
@@ -49,12 +57,15 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
         
     # Mapping from accepted text values to processing method class names
     processing_mapping = {
-        'num': NumericColumnProcessor,
         'words': StringColumnProcessor,
         'words_not_exact': StringNoisyColumnProcessor,
-        'list_num': List_of_Numbers_ColumnProcessor,
-        'ordered_list_num': Ordered_List_of_Numbers_ColumnProcessor,
-        'list_words': List_of_Strings_ColumnProcessor
+        'num': NumericColumnProcessor,
+        'choice': BooleanListColumnProcessor,
+        'keyword': KeywordListColumnProcessor,
+        'list_num': ListColumnProcessor,
+        'list_num_order': OrderedListColumnProcessor,
+        'list_words': List_of_Strings_ColumnProcessor,
+        'sentence': LLMColumnProcessor
     }
     # Replace text values with actual processing method class names
     real_process_list = [processing_mapping[value]() for value in process_list]
@@ -109,12 +120,10 @@ def automatic_process_for_columns_attribution(table_truth):
             processors[column] = NumericColumnProcessor()
         elif any(typ is str for typ in types_in_column):
             processors[column] = StringColumnProcessor()
-        # elif any(typ is bool for typ in types_in_column):
-        #     processors[column] = BooleanProcessor()
-        # elif any(typ is pd.Timestamp for typ in types_in_column):
-        #     processors[column] = DateTimeProcessor()
+        elif any(typ is bool for typ in types_in_column):
+             processors[column] = BooleanListColumnProcessor()
         elif any(typ is list[int] for typ in types_in_column):
-            processors[column] = List_of_Numbers_ColumnProcessor()
+            processors[column] = ListColumnProcessor()
         elif any(typ is list[str] for typ in types_in_column):
             processors[column] = List_of_Strings_ColumnProcessor()
         else:

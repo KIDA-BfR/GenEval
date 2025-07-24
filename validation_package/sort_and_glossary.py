@@ -6,11 +6,21 @@ def sort_data(table_truth, table_compared, glossary=None):
     if glossary is None:
         glossary = {}
     
-    table_truth.columns = table_truth.columns.str.strip().str.lower()
-    table_truth = table_truth.sort_values(by=table_truth.columns[0]).reset_index(drop=True)
+    # Read the spreadsheets
+    table1 = table_truth
+    table2 = table_compared
 
-    table_compared.columns = table_compared.columns.str.strip().str.lower()
-    table_compared = table_compared.sort_values(by=table_compared.columns[0]).reset_index(drop=True)
+    # Using col names of table1 for table 2; Attention: make sure order is the same!
+    table2.columns = table1.columns
+
+    # Sorting the tables by 'Filename' column
+    table1_sorted = table1.sort_values(by="filename").reset_index(drop=True)
+    table2_sorted = table2.sort_values(by="filename").reset_index(drop=True)
+
+    # Strip any leading or trailing whitespace from all column names
+    table1_sorted.columns = table1_sorted.columns.str.strip()
+    table2_sorted.columns = table2_sorted.columns.str.strip()
+
 
     # Applying the glossary to a specific column
     tables = [("truth", table_truth), ("compared", table_compared)]
