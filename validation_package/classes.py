@@ -1,5 +1,7 @@
 import pandas as pd 
 import re
+import getpass
+import os
 from difflib import SequenceMatcher
 from langchain.prompts import ChatPromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
@@ -400,6 +402,8 @@ class LLMColumnProcessor(ColumnProcessor):
         prompt = ChatPromptTemplate.from_template(prompt_template)
 
         # Use ChatOpenAI for chat models
+        if "GOOGLE_API_KEY" not in os.environ:
+            os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google AI API key: ")
         llm = ChatGoogleGenerativeAI(model=model_name, temperature=0)
 
         # Chain prompt and chat model
