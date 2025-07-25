@@ -1,1 +1,1 @@
-num, words, words_not_exact, list_num, ordered_list_num, list_words
+words, words_not_exact, num, choice, keyword, list_num, list_num_ordered, list_words, sentence
