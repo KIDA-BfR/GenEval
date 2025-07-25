@@ -69,7 +69,7 @@ Each processing method is stored under a class.
 | `BooleanListColumnProcessor` | choice | int, float, str | Accepts boolean operators in truth file and checks comparison file accordingly
 | `KeywordListColumnProcessor` | keyword | str | Takes truth file as keywords and only looks for keywords in extraction
 | `ListColumnProcessor` | list_num | int, float | Compares lists with numeric values
-| `OrderedListColumnProcessor` | list_num_ordered | int, float | Compares lists with numeric values and take order into account
+| `OrderedListColumnProcessor` | list_num_order | int, float | Compares lists with numeric values and take order into account
 | `List_of_Strings_ColumnProcessor` | list_words | str | Compares lists with string values
 | `LLMColumnProcessor` | sentence | int, float | Lets an LLM prompt-based compare the 2 files
 

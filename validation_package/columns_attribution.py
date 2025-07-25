@@ -32,7 +32,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
     print("choice - BooleanListColumnProcessor()")
     print("keyword - KeywordListColumnProcessor()")
     print("list_num - ListColumnProcessor()")
-    print("list_num_ordered - OrderedListColumnProcessor()")
+    print("list_num_order - OrderedListColumnProcessor()")
     print("list_words - List_of_Strings_ColumnProcessor()")
     print("sentence - LLMColumnProcessor()")
 
@@ -50,7 +50,7 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
         return "Error: The number of columns and the number of processing methods do not match."
 
     # Check if values from the attribution.txt file are in the accepted values list
-    process_values = ['words', 'words_not_exact', 'num', 'choice', 'keyword', 'list_num', 'list_num_ordered', 'list_words', 'sentence']
+    process_values = ['words', 'words_not_exact', 'num', 'choice', 'keyword', 'list_num', 'list_num_order', 'list_words', 'sentence']
     for value in process_list:
         if value not in process_values:
             return "Invalid choice of processing method. Check the spelling."
