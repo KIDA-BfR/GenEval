@@ -13,13 +13,9 @@ def sort_data(table_truth, table_compared, glossary=None):
     # Using col names of table1 for table 2; Attention: make sure order is the same!
     table2.columns = table1.columns
 
-    # Sorting the tables by 'Filename' column
-    table1_sorted = table1.sort_values(by="filename").reset_index(drop=True)
-    table2_sorted = table2.sort_values(by="filename").reset_index(drop=True)
-
     # Strip any leading or trailing whitespace from all column names
-    table1_sorted.columns = table1_sorted.columns.str.strip()
-    table2_sorted.columns = table2_sorted.columns.str.strip()
+    table1.columns = table1.columns.str.strip()
+    table2.columns = table2.columns.str.strip()
 
 
     # Applying the glossary to a specific column
