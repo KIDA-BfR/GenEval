@@ -73,6 +73,9 @@ Each processing method is stored under a class.
 | `List_of_Strings_ColumnProcessor` | list_words | str | Compares lists with string values
 | `LLMColumnProcessor` | sentence | int, float | Lets an LLM prompt-based compare the 2 files
 
+**Warning** : You need an **API key** to use the `LLMColumnProcessor`.
+You will be asked to input it when running the columns attribution part
+
 ### 4. columns attribution
 This part includes 3 functions, of which 2 main, and you should choose the best-suited one for your case.
 In this example we are using both to demonstrate, but they have the same goal. The 3rd one is linked with the 2nd one.
