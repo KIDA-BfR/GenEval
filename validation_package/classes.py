@@ -354,7 +354,7 @@ class OrderedListColumnProcessor(ListColumnProcessor):
 
 
 class List_of_Strings_ColumnProcessor(ListColumnProcessor):
-    # Inherits compare from List_of_Numbers_ColumnProcessor
+    # Inherits compare from ListColumnProcessor
     # Uses instances of StringColumnProcessor
     def __init__(self):
         self.string_processor = StringColumnProcessor()
@@ -372,7 +372,7 @@ class List_of_Strings_ColumnProcessor(ListColumnProcessor):
 
 
 class LLMColumnProcessor(ColumnProcessor):
-    def __init__(self, model_name="gemini-2.5-flash-preview-04-17"):
+    def __init__(self, model_name="gemini-2.5-flash"):
         # Define the structured output: just a yes/no field
         response_schemas = [
             ResponseSchema(
