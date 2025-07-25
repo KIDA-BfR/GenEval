@@ -8,7 +8,7 @@ This library compares a ground truth table to an extraction table and evaluates 
 ## Main goal
 ---
 The idea behind the creation of such library is to be able to validate the data extraction performance of an LLM - or any other data extraction tool.
-For now, six different data types can be analysed. They are listed under **As an input**.
+For now, nine different data types can be analysed. They are listed under **As an input**.
 More processing methods can/ will be added.
 
 To use this library, you will produce a ground truth table - in which you read and copied at least one PDF file content of interest.
@@ -21,7 +21,7 @@ This library is relevant if a bigger LLM extraction project is undertaken. You c
 ## An an input:
 ---
 You input 2 files, containing the following type of data:
-- Strings, Approximate strings, Lists of strings
+- Strings, Approximate strings, Lists of strings, Sentences
 - Numbers, Lists of numbers, Ordered lists of numbers
 
 ---
@@ -63,12 +63,15 @@ Each processing method is stored under a class.
 
 | Name of the class | Manual attribution | Data type | Description |
 |-------------------|--------------------|-------------|-----------|
-| `NumericColumnProcessor` | num | int, float | Compares numeric values
 | `StringColumnProcessor` | words | str | Compares string columns by normalizing them & comparing using sequence matching
 | `StringNoisyColumnProcessor` | words_not_exact | str | Like `StringColumnProcessor` but with lower similarity threshold
-| `List_of_Numbers_ColumnProcessor` | list_num | int, float | Compares lists with numeric values
-| `Ordered_List_of_Numbers_ColumnProcessor` | ordered_list_num | int, float | Compares lists with numeric values and take order into account
+| `NumericColumnProcessor` | num | int, float | Compares numeric values
+| `BooleanListColumnProcessor` | choice | int, float, str | Accepts boolean operators in truth file and checks comparison file accordingly
+| `KeywordListColumnProcessor` | keyword | str | Takes truth file as keywords and only looks for keywords in extraction
+| `ListColumnProcessor` | list_num | int, float | Compares lists with numeric values
+| `OrderedListColumnProcessor` | list_num_ordered | int, float | Compares lists with numeric values and take order into account
 | `List_of_Strings_ColumnProcessor` | list_words | str | Compares lists with string values
+| `LLMColumnProcessor` | sentence | int, float | Lets an LLM prompt-based compare the 2 files
 
 ### 4. columns attribution
 This part includes 3 functions, of which 2 main, and you should choose the best-suited one for your case.
