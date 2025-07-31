@@ -10,6 +10,10 @@ def sort_data(table_truth, table_compared, glossary=None):
     table1 = table_truth
     table2 = table_compared
 
+    # Checking that the files have the same number of columns
+    if len(table1.columns) != len(table2.columns):
+        print("Check your tables. Not the same number of columns.")
+
     # Using col names of table1 for table 2; Attention: make sure order is the same!
     table2.columns = table1.columns
 
