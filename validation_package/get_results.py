@@ -2,9 +2,14 @@ import pandas as pd
 import os
 from IPython.display import display 
 
-def results(table_truth, table_compared, comparison_results, confusion_matrices, display_results = False):
+def results(table_truth, table_compared, comparison_results, confusion_matrices, display_results=False, ignore_columns=None):
+    if ignore_columns is None:
+        ignore_columns = []
+
+    # Filter out the columns to ignore from both tables
+    columns = [col for col in table_truth.columns if col not in ignore_columns]
+
     combined_output = pd.DataFrame()
-    columns = table_truth.columns
 
     # Combine outputs and comparisons
     for column in columns:
@@ -14,24 +19,22 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
 
     # Calculate accuracy for each column in the confusion matrices
     for column, matrix in confusion_matrices.items():
-        TP = matrix["Correct"]
-        FP = matrix["False Positive"]
-        FN = matrix["False Negative"]
-        N = matrix["Incorrect"]
+        if column in columns:
+            TP = matrix["Correct"]
+            FP = matrix["False Positive"]
+            FN = matrix["False Negative"]
+            N = matrix["Incorrect"]
+            accuracy = TP / (TP + FP + FN + N) if (TP + FP + FN + N) > 0 else 0
 
-        accuracy = TP / (TP + FP + FN + N) if (TP + FP + FN + N) > 0 else 0
-
-        # Store only the accuracy in the matrix
-        matrix.update({
-            "Accuracy": accuracy
-        })
+            # Store only the accuracy in the matrix
+            matrix.update({"Accuracy": accuracy})
 
     # Fill confusion matrix
     overall_metrics = {"Correct": 0, "Incorrect": 0, "False Positive": 0, "False Negative": 0}
 
     # Sum all the confusion matrix values to get overall metrics
     for column, matrix in confusion_matrices.items():
-        if column == "Overall":
+        if column == "Overall" or column not in columns:
             continue  # Skip if already calculated
         overall_metrics["Correct"] += matrix["Correct"]
         overall_metrics["Incorrect"] += matrix["Incorrect"]
@@ -43,8 +46,6 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
     FP = overall_metrics["False Positive"]
     FN = overall_metrics["False Negative"]
     N = overall_metrics["Incorrect"]
-
-
     overall_accuracy = TP / (TP + FP + FN + N) if (TP + FP + FN + N) > 0 else 0
 
     # Store the overall metrics in the matrix
@@ -68,6 +69,7 @@ def results(table_truth, table_compared, comparison_results, confusion_matrices,
     notebook_dir = os.getcwd()
     comparison_results_file_path = os.path.join(notebook_dir, 'comparison.results.xlsx')
     combined_output.to_excel(comparison_results_file_path, index = False)
+    
     confusion_matrices_file_path = os.path.join(notebook_dir, 'confusion_matrices.xlsx')
     confusion_matrices_df.to_excel(confusion_matrices_file_path, index = False)
 
