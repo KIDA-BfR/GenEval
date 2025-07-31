@@ -10,7 +10,6 @@ def comparison_init(table_truth, table_compared, processors, ignore_columns=None
     table_compared_filtered = table_compared[columns]
 
     # Create an empty DataFrame to store the comparison results
-    columns = table_truth.columns
     comparison_results = pd.DataFrame(columns=columns)
 
     # Initialize confusion matrices
