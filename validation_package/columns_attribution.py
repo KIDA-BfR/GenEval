@@ -20,7 +20,7 @@ from validation_package.classes import (
 # There are default choices, but you can modify it and choose a more suitable processing method via the JSON file 
 # that you get in the end. Run it in the next function to apply the modifications, after manually editing the JSON file.
 
-def manual_process_for_columns_attribution(table_truth, attribution_txt_file_path):
+def manual_process_for_columns_attribution(table_truth, attribution_txt_file_path, ignore_column_txt_file_path):
     # Choosing the processing method for each column
     print("What type of processing for each column ?")
     print("Write a txt file via choosing from this table: ")
@@ -40,13 +40,21 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
     columns_list = table_truth.columns.str.strip().tolist()
     print(columns_list)
 
+    # Read the list of columns to ignore from the ignore text file
+    with open(ignore_column_txt_file_path, 'r') as ignore_file:
+        ignore_content = ignore_file.read()
+        ignore_columns = [col.strip() for col in ignore_content.split(',')]
+
+    # Filter out the columns to ignore
+    columns_to_process = [col for col in columns_list if col not in ignore_columns]
+
     # Read the list from the .txt file
     with open(attribution_txt_file_path, 'r') as file:
         file_content = file.read()
         process_list = [value.strip() for value in file_content.split(',')]
 
     # Check if both lists are the same length
-    if len(columns_list) != len(process_list):
+    if len(columns_to_process) != len(process_list):
         return "Error: The number of columns and the number of processing methods do not match."
 
     # Check if values from the attribution.txt file are in the accepted values list
@@ -71,8 +79,13 @@ def manual_process_for_columns_attribution(table_truth, attribution_txt_file_pat
     real_process_list = [processing_mapping[value]() for value in process_list]
     print(real_process_list)
 
-    # Create a dictionary combining the two lists
-    processors = dict(zip(columns_list, real_process_list))
+    # Create a dictionary combining the columns to process and their processors
+    processors = dict(zip(columns_to_process, real_process_list))
+
+    # Print the columns that have been ignored
+    for col in ignore_columns:
+        print(f"Column '{col}' has been ignored for the validation.")
+
     print("The manual attribution was taken into account.")
     return processors 
 
